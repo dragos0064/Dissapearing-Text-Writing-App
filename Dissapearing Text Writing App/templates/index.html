@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanishing Text Editor</title>
+    <style>
+        textarea {
+            width: 80%;
+            height: 300px;
+            margin: 50px;
+            padding: 10px;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="text-editor" placeholder="Start typing... If you stop, your work will disappear."></textarea>
+
+    <script>
+        const editor = document.getElementById('text-editor');
+        let timeoutId;
+
+        editor.addEventListener('input', function() {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function() {
+                editor.value = '';  // Clear the text area
+                alert('Time out! You stopped typing, so your work has disappeared.');
+            }, 5000);  // Set timeout for 5000 milliseconds or 5 seconds
+        });
+    </script>
+</body>
+</html>
